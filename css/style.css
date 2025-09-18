@@ -185,18 +185,36 @@ img {
 
 /* ---- Imagens ---- */
 
-.main-figure {
+
+/* ---- Estilo para Figuras (Imagens com Legenda) ---- */
+
+.main-figure,
+.map-figure {
     margin: 2rem 0;
+    /* Margem superior e inferior */
     border: 1px solid var(--border-color);
     padding: 10px;
     background-color: var(--white);
+    text-align: center;
+    /* IMPORTANTE: Centraliza o texto (legenda) e elementos inline */
 }
 
-.main-figure figcaption {
+.main-figure img,
+.map-figure img {
+    display: block;
+    /* Essencial: Transforma a imagem em um elemento de bloco */
+    margin: 0 auto 10px auto;
+    /* A mágica da centralização: margens laterais automáticas */
+    max-width: 100%;
+    height: auto;
+}
+
+.main-figure figcaption,
+.map-figure figcaption {
     font-size: 0.9rem;
     color: var(--dark-gray);
-    text-align: center;
     margin-top: 5px;
+    /* Adiciona um pequeno espaço acima da legenda se necessário */
 }
 
 
