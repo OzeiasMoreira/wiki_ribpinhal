@@ -1,17 +1,14 @@
 /* ================================================= */
 
 
-/* PORTAL PINHALENSE - STYLE SHEET          */
+/* PORTAL PINHALENSE - STYLE SHEET v2.0 (MODERN)     */
 
 
 /* ================================================= */
 
 
-/* 1. VARIÁVEIS E ESTILOS GLOBAIS
+/* 1. VARIÁVEIS, FONTES E ESTILOS GLOBAIS
 -------------------------------------------------- */
-
-
-/* Importação das fontes do Google Fonts */
 
 @import url('https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Open+Sans:wght@400;600&display=swap');
 :root {
@@ -20,7 +17,6 @@
     --white: #FFFFFF;
     --light-gray: #f8f9fa;
     --dark-gray: #333333;
-    /* Um pouco mais suave que o preto total */
     --green-accent: #3A7F2D;
     --yellow-accent: #FFD700;
     --border-color: #dee2e6;
@@ -30,6 +26,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     line-height: 1.7;
@@ -37,6 +37,8 @@ body {
     padding: 0;
     background-color: var(--light-gray);
     color: var(--dark-gray);
+    overflow-x: hidden;
+    /* Previne scroll horizontal indesejado */
 }
 
 img {
@@ -55,12 +57,13 @@ h3 {
     color: var(--primary-blue);
     border-bottom: 1px solid var(--border-color);
     padding-bottom: 0.5rem;
-    margin-bottom: 1rem;
-    font-weight: 700;
+    margin-bottom: 1.5rem;
 }
 
-p {
-    margin-bottom: 1rem;
+h4 {
+    font-family: 'Lora', serif;
+    color: var(--primary-blue);
+    margin-top: 0;
 }
 
 a {
@@ -75,6 +78,7 @@ a:hover {
 
 ul {
     padding-left: 20px;
+    margin-bottom: 1rem;
 }
 
 
@@ -82,17 +86,24 @@ ul {
 -------------------------------------------------- */
 
 #main-header {
-    background-color: var(--primary-blue);
+    /* EFEITO GLASSMORPHISM (VIDRO FOSCO) */
+    background-color: rgba(10, 34, 99, 0.85);
+    /* Azul com 85% de opacidade */
+    backdrop-filter: blur(10px);
+    /* O efeito de desfoque */
+    -webkit-backdrop-filter: blur(10px);
+    /* Para compatibilidade com Safari */
     color: var(--white);
     padding: 15px 30px;
-    border-bottom: 3px solid var(--yellow-accent);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    /* Borda sutil */
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .container {
@@ -101,17 +112,16 @@ ul {
     padding: 0 1rem;
     display: flex;
     gap: 2rem;
-    animation: fadeIn 0.6s ease-in-out;
 }
 
 #main-content {
     flex: 3;
     background-color: var(--white);
     padding: 2.5rem;
-    /* Um pouco mais de respiro interno */
     border: 1px solid var(--border-color);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    /* Bordas um pouco mais arredondadas */
 }
 
 #sidebar {
@@ -120,20 +130,19 @@ ul {
     top: 120px;
     /* Header height + margin */
     align-self: flex-start;
-    /* Impede que a sidebar estique */
 }
 
 #main-footer {
     background-color: var(--primary-blue);
     color: var(--white);
     text-align: center;
-    padding: 1.5rem;
+    padding: 2rem;
     margin-top: 2rem;
     border-top: 3px solid var(--yellow-accent);
 }
 
 
-/* 4. COMPONENTES
+/* 4. COMPONENTES E MICRO-INTERAÇÕES
 -------------------------------------------------- */
 
 
@@ -171,23 +180,24 @@ ul {
     color: var(--white);
     text-transform: uppercase;
     font-weight: 600;
-    /* Um pouco mais fino que bold */
     padding: 10px 20px;
     border-radius: 20px;
     display: inline-block;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    position: relative;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 #main-header nav a:hover {
     background-color: var(--secondary-blue);
     transform: translateY(-2px);
-    color: var(--white);
 }
 
 #main-header nav a.active {
     background-color: var(--yellow-accent);
     color: var(--primary-blue);
     cursor: default;
+    /* EFEITO DE BRILHO (GLOW) */
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
 }
 
 
@@ -210,8 +220,8 @@ ul {
     background-color: var(--white);
     border: 1px solid var(--border-color);
     padding: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
 }
 
 .infobox h3 {
@@ -227,11 +237,6 @@ ul {
     margin: 0;
 }
 
-.infobox ul li {
-    padding: 0;
-    font-size: 0.95rem;
-}
-
 .infobox ul li a {
     display: block;
     padding: 8px 12px;
@@ -244,7 +249,7 @@ ul {
 }
 
 
-/* --- Figuras de Imagem --- */
+/* --- Figuras de Imagem e Mapa --- */
 
 .main-figure,
 .map-figure {
@@ -253,14 +258,14 @@ ul {
     padding: 10px;
     background-color: var(--white);
     text-align: center;
-    border-radius: 8px;
+    border-radius: 12px;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .main-figure:hover,
 .map-figure:hover {
     transform: scale(1.02);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 }
 
 .main-figure figcaption,
@@ -273,14 +278,17 @@ ul {
 
 /* --- Galeria com Rolagem Horizontal --- */
 
+.scroll-gallery-container {
+    position: relative;
+}
+
 .scroll-gallery {
     display: flex;
     overflow-x: scroll;
     scroll-snap-type: x mandatory;
     max-width: 700px;
     margin: 2rem auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
@@ -293,28 +301,10 @@ ul {
     flex: 0 0 100%;
     width: 100%;
     scroll-snap-align: start;
-}
-
-
-/* ---- Estilos para as Setas da Galeria CSS-Only ---- */
-
-
-/* Novo container para ajudar a posicionar as setas */
-
-.scroll-gallery-container {
     position: relative;
-    /* Essencial para o posicionamento das setas */
+    scroll-margin-top: 120px;
+    /* Correção do pulo */
 }
-
-
-/* Garante que as imagens preencham o espaço */
-
-.gallery-image {
-    position: relative;
-}
-
-
-/* Container das setas dentro de cada imagem */
 
 .gallery-nav {
     position: absolute;
@@ -326,25 +316,18 @@ ul {
     justify-content: space-between;
     align-items: center;
     pointer-events: none;
-    /* Permite arrastar a imagem mesmo com as setas por cima */
 }
-
-
-/* Estilo das setas */
 
 .arrow {
     pointer-events: all;
-    /* Torna apenas as setas clicáveis */
     color: white;
     background-color: rgba(0, 0, 0, 0.4);
     padding: 10px 15px;
     border-radius: 5px;
-    text-decoration: none;
     font-size: 24px;
     font-weight: bold;
     transition: background-color 0.3s ease;
     margin: 0 15px;
-    /* Espaçamento das bordas */
 }
 
 .arrow:hover {
@@ -353,125 +336,92 @@ ul {
 }
 
 
-/* ---- Correção e Suavização do Scroll da Galeria ---- */
+/* --- Componentes da Página Inicial --- */
 
-
-/* 1. Deixa todo o scroll da página mais suave (bônus de UX) */
-
-html {
-    scroll-behavior: smooth;
-}
-
-
-/* 2. A CORREÇÃO PRINCIPAL: Impede o "pulo" da página */
-
-.gallery-image {
-    scroll-margin-top: 120px;
-    /* Cria uma margem de scroll no topo */
-}
-
-
-/* --- Tabelas --- */
-
-table {
+.hero-banner {
     width: 100%;
-    border-collapse: collapse;
-    margin: 1.5rem 0;
-    border-radius: 8px;
-    overflow: hidden;
-    /* Truque para o border-radius funcionar na tabela */
+    height: 40vh;
+    /* ALTERAÇÃO AQUI: troque 'hero-bg.jpg' pelo nome da sua imagem */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../imagens/Gemini_Generated_Image_fesf11fesf11fesf.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
 }
 
-table th,
-table td {
-    border: 1px solid var(--border-color);
-    padding: 0.8rem 1rem;
-    text-align: left;
+.hero-text h1 {
+    font-family: 'Lora', serif;
+    font-size: 3rem;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    border: none;
 }
 
-table th {
-    background-color: var(--primary-blue);
-    color: var(--white);
-    font-weight: 600;
+.hero-text p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-table tr:nth-child(even) {
+.news-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.news-card {
     background-color: #f8f9fa;
-}
-
-table tr:hover {
-    background-color: #e9ecef;
-}
-
-
-/* ---- Estilos para o Mapa Interativo SVG ---- */
-
-.interactive-map-container {
-    max-width: 700px;
-    margin: 2rem auto;
     border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.thumbnail-gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 1rem;
+}
+
+.thumbnail-gallery img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
     border-radius: 8px;
-    overflow: hidden;
-    background-color: #f8f9fa;
-    /* Cor de fundo caso a imagem demore a carregar */
-}
-
-
-/* Estilo base para todos os polígonos dos municípios */
-
-.municipio {
-    fill: var(--primary-blue);
-    /* Cor de preenchimento */
-    opacity: 0;
-    /* Começa totalmente transparente */
-    stroke: var(--yellow-accent);
-    /* Cor da borda */
-    stroke-width: 4px;
-    /* Largura da borda */
-    transition: opacity 0.3s ease-in-out;
-    /* Transição suave */
-}
-
-
-/* Efeito ao passar o mouse sobre o polígono */
-
-.municipio:hover {
-    opacity: 0.4;
-    /* Fica semitransparente, revelando a cor */
     cursor: pointer;
 }
 
 
-/* Estilo para as etiquetas de texto (nomes das cidades) */
+/* --- Componentes da Página Guia da Cidade --- */
 
-.map-label {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 30px;
-    /* Tamanho da fonte no mapa */
-    font-weight: 600;
-    fill: var(--white);
-    /* Cor do texto */
-    text-anchor: middle;
-    /* Centraliza o texto no ponto x,y */
-    pointer-events: none;
-    /* Impede que o texto bloqueie o hover no polígono */
-    opacity: 0;
-    /* Começa invisível */
-    transition: opacity 0.3s ease-in-out;
-    /* Transição suave */
-    /* Efeito de contorno no texto para melhor legibilidade */
-    paint-order: stroke;
-    stroke: #000000;
-    stroke-width: 2px;
-    stroke-linecap: butt;
-    stroke-linejoin: miter;
+.lista-guia {
+    list-style: none;
+    padding: 0;
 }
 
+.lista-guia li {
+    background-color: #f8f9fa;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
 
-/* Faz o nome da cidade aparecer quando o mouse está sobre o polígono */
-
-.municipio:hover+.map-label {
-    opacity: 1;
+.lista-guia li span {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-right: 15px;
 }
 
 
@@ -487,4 +437,21 @@ table tr:hover {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+
+/* Ativa a animação de Fade In inicial no container */
+
+.container {
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+
+/* Classe para ativar as animações de scroll */
+
+.animate-on-scroll {
+    animation: fadeIn linear;
+    /* Reutiliza a animação de fade in */
+    animation-timeline: view();
+    animation-range: entry 10% cover 40%;
 }
